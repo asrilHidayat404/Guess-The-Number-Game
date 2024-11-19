@@ -76,7 +76,7 @@ function matcher(randomNumber: number, guess_number: number): string {
         ||
         (guess_number - 2 === randomNumber)
     ) {
-        return "Tebakan Anda Mendekati";
+        return "you get closer";
     }
     const matcher: boolean = randomNumber === guess_number
     if (!matcher) {
@@ -106,11 +106,11 @@ function matcher(randomNumber: number, guess_number: number): string {
             // Mengembalikan pesan kosong karena kita menampilkan pesan di UI
             return ""; 
         }
-        return "Tebakan Anda Salah🗿🗿🗿";
+        return "Wrong answer🗿🗿🗿";
     }
 
 
-    return "✨Tebakan Anda Benar✨";
+    return "✨Congratulations, you guess the right number✨";
 
 }
 function startGuessing() {

@@ -59,7 +59,7 @@ function matcher(randomNumber, guess_number) {
             (guess_number - 1 === randomNumber)
         ||
             (guess_number - 2 === randomNumber)) {
-        return "Tebakan Anda Mendekati";
+        return "you get closer";
     }
     const matcher = randomNumber === guess_number;
     if (!matcher) {
@@ -88,9 +88,9 @@ function matcher(randomNumber, guess_number) {
             // Mengembalikan pesan kosong karena kita menampilkan pesan di UI
             return "";
         }
-        return "Tebakan Anda Salah🗿🗿🗿";
+        return "Wrong answer🗿🗿🗿";
     }
-    return "✨Tebakan Anda Benar✨";
+    return "✨Congratulations, you guess the right number✨";
 }
 function startGuessing() {
     const guessValue = Number(guess_number === null || guess_number === void 0 ? void 0 : guess_number.value);
