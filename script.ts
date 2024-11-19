@@ -1,3 +1,6 @@
+
+
+
 const buttons_level = document.querySelectorAll<HTMLButtonElement>(".difficulties button");
 
 const level_guess = document.querySelector<HTMLSpanElement>("#level_guess")
@@ -136,3 +139,35 @@ cheat?.addEventListener("click", (e: MouseEvent) => {
 })
 
 
+
+let audio: HTMLAudioElement | null = null;
+let isPlaying = false; // Flag untuk melacak status audio
+
+window.addEventListener("mousedown", () => {
+    // Jika audio sudah diputar, tidak lakukan apa-apa
+    if (isPlaying) return;
+
+    // Membuat objek audio baru dan memulai pemutaran
+    audio = new Audio("./assets/song.mp3");
+    
+    audio.play().then(() => {
+        console.log('Audio is playing');
+        isPlaying = true; // Tandai audio sedang diputar
+    }).catch(error => {
+        console.log('Error playing audio:', error);
+    });
+
+    // Tambahkan event untuk menandai saat audio selesai diputar
+    audio.onended = () => {
+        isPlaying = false; // Setel ulang flag setelah audio selesai
+        console.log('Audio has ended');
+    };
+
+    // Menonaktifkan event lain selama pemutaran
+    window.removeEventListener("mousedown", playAudio);
+});
+
+function playAudio() {
+    // Fungsi yang sebelumnya dipakai, bisa dihapus atau digantikan
+    console.log("Audio event ignored while it's playing");
+}

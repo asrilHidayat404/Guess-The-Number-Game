@@ -108,3 +108,29 @@ start === null || start === void 0 ? void 0 : start.addEventListener("click", (e
 cheat === null || cheat === void 0 ? void 0 : cheat.addEventListener("click", (e) => {
     cheat.textContent = `${randomNumber}`;
 });
+let audio = null;
+let isPlaying = false; // Flag untuk melacak status audio
+window.addEventListener("mousedown", () => {
+    // Jika audio sudah diputar, tidak lakukan apa-apa
+    if (isPlaying)
+        return;
+    // Membuat objek audio baru dan memulai pemutaran
+    audio = new Audio("./assets/song.mp3");
+    audio.play().then(() => {
+        console.log('Audio is playing');
+        isPlaying = true; // Tandai audio sedang diputar
+    }).catch(error => {
+        console.log('Error playing audio:', error);
+    });
+    // Tambahkan event untuk menandai saat audio selesai diputar
+    audio.onended = () => {
+        isPlaying = false; // Setel ulang flag setelah audio selesai
+        console.log('Audio has ended');
+    };
+    // Menonaktifkan event lain selama pemutaran
+    window.removeEventListener("mousedown", playAudio);
+});
+function playAudio() {
+    // Fungsi yang sebelumnya dipakai, bisa dihapus atau digantikan
+    console.log("Audio event ignored while it's playing");
+}
