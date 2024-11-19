@@ -34,13 +34,13 @@ function choosen_level(level) {
     console.log(level);
     switch (level) {
         case "easy":
-            return { key: 10, value: "1 - 10" };
+            return { key: 10, value: "1-10" };
         case "medium":
-            return { key: 50, value: "1 - 50" };
+            return { key: 50, value: "1-50" };
         case "hard":
-            return { key: 100, value: "1 - 100" };
+            return { key: 100, value: "1-100" };
         case "impossible":
-            return { key: 100000000000, value: "0 - 0" };
+            return { key: 100000000000, value: "1-∞" };
         default:
             return { key: 0, value: "" };
     }
@@ -63,7 +63,7 @@ function matcher(randomNumber, guess_number) {
     }
     const matcher = randomNumber === guess_number;
     if (!matcher) {
-        if (lvl.value == "0 - 0") {
+        if (lvl.value == "1-∞") {
             const greet = ["fool", "kids", "os.remove", "Wrong answer, Good bye😊"];
             let greetMessage = ""; // Menyimpan pesan yang akan ditampilkan
             const feedbackElement = result; // Ambil elemen feedback yang ada di HTML
